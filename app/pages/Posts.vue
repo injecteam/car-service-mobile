@@ -38,6 +38,7 @@
 
 <script>
 import App from '../App';
+import * as http from 'http';
 
 export default {
 	props: {
@@ -45,6 +46,14 @@ export default {
 			type: String,
       default: '',
 		}
+  },
+
+  created() {
+    http.getJSON("http://10.0.2.2:3000/api/users/").then(result => {
+      console.log(result)
+    }, error => {
+      console.log(error);
+    });
   },
 
   methods: {
